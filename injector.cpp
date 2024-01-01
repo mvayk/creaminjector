@@ -16,7 +16,8 @@ DWORD getWindow(LPCSTR argu) {
   }
 }
 
-int main(const char* dllpath, LPCSTR processName) {
+// int main(void* dllpath, LPCSTR processName) {
+int main(char* dllpath, LPCSTR processName) {
   pid = getWindow(processName);
 
   std::cout << "takes pid as argument" << std::endl;

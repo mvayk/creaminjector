@@ -1,4 +1,3 @@
-#include <cstdlib>
 #include <iostream>
 #include <windows.h>
 #include <TlHelp32.h>
@@ -25,12 +24,12 @@ int main(int argc, char** argv) {
 
     if (!fileExists(dllpath)) {
       std::cout << "[CreamInjector] > Couldn't find path." << std::endl;
-      return EXIT_FAILURE;
+      return 1;
     }
 
     if (!hwnd) {
       std::cout << "[CreamInjector] > Couldn't find PID from Process Name." << std::endl;
-      return EXIT_FAILURE;
+      return 1;
     } else {
       HANDLE process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
       LPVOID alloc = VirtualAllocEx(process, 0, strlen(dllpath) + 1, MEM_COMMIT, PAGE_READWRITE);
@@ -42,7 +41,6 @@ int main(int argc, char** argv) {
         CloseHandle(process);
         std::cout << "[CreamInjector] > Sucessfully closed handle." << std::endl;
       }
-      return EXIT_SUCCESS;
     }
   }
   return 0;

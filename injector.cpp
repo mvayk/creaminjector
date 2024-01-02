@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
       VirtualFreeEx(process, alloc, strlen(dllpath) + 1, MEM_RELEASE);
       if (process) {
         CloseHandle(process);
-        std::cout << "[CreamInjector] > Sucessfully closed handle" << std::endl;
+        std::cout << "[CreamInjector] > Sucessfully closed handle." << std::endl;
       }
       return EXIT_SUCCESS;
     }
